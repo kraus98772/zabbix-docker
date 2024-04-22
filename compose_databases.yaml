@@ -15,7 +15,7 @@ services:
 #   - --ssl-key=/run/secrets/server-key.pem
   restart: "${RESTART_POLICY}"
   volumes:
-   - ${DATA_DIRECTORY}/var/lib/mysql:/var/lib/mysql:rw
+   - mysql-data:/var/lib/mysql:rw
    - ${ENV_VARS_DIRECTORY}/mysql_init/init_proxy_db.sql:/docker-entrypoint-initdb.d/mysql_init_proxy.sql:ro
 #   - dbsocket:/var/run/mysqld/
   env_file:
@@ -38,5 +38,5 @@ services:
  db-data-mysql:
   image: busybox
   volumes:
-   - ${DATA_DIRECTORY}/var/lib/mysql:/var/lib/mysql:rw
+   - mysql-data:/var/lib/mysql:rw
 
